@@ -30,14 +30,33 @@
     </div>
 
     <div class="">
+      <div class="numbers">8 888 88 88 98</div>
       <div>Звони скорее!</div>
-      <div>8 888 88 88 98</div>
     </div>
   </header>
 
   <div class="mainContent">
+
+    <div class="upbutton more hide">
+      <div class="upSc"><img src="img/UP.png" alt=""></div>
+      <div class="back">Вернуться <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+    </div>
+    <div class="result">
+      <h2>Найдено 666 квартир</h2>
+    </div>
     <div class="main_items  wrapper">
-      <div class="mainItem book">
+
+      <div class="sort">
+        <div class="sortText">Сортировать по:</div>
+        <div class="sortPrice">Цене <div class="up"><img src="img/more.png" alt=""></div>
+          <div class="down hide"><img src="img/less.png" alt=""></div>
+        </div>
+        <div class="sortRooms">Комнатам<div class="up"><img src="img/more.png" alt=""></div>
+          <div class="down hide"><img src="img/less.png" alt=""></div>
+        </div>
+      </div>
+      <div class="mainItem book" data-price='1900000' data-rooms='0'>
+        <div class="star"><img src="img/star.png" alt=""></div>
         <div class="imgBox"><img src="img/632u.png" alt=""></div>
         <div class="flatName">Студия №44</div>
         <div class="charBox">
@@ -46,9 +65,10 @@
           <span>12/14<br> этаж</span>
         </div>
         <div class="price">1 900 000 руб.</div>
-        <button >Забронировано</button>
+        <button>Забронировано</button>
       </div>
-      <div class="mainItem free">
+      <div class="mainItem free" data-price='1666666' data-rooms='101'>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/565u.png" alt=""></div>
         <div class="flatName">Однокомнатная №666</div>
         <div class="charBox">
@@ -57,9 +77,10 @@
           <span>6/6 <br>этаж</span>
         </div>
         <div class="price">1 666 666 руб.</div>
-        <button >Свободно</button>
+        <button>Свободно</button>
       </div>
-      <div class="mainItem bought">
+      <div class="mainItem bought" data-price='5900000' data-rooms='102'>
+        <div class="star"><img src="img/star.png" alt=""></div>
         <div class="imgBox"><img src="img/567u.png" alt=""></div>
         <div class="flatName">Двухкомнатная №567</div>
         <div class="charBox">
@@ -70,7 +91,8 @@
         <div class="price">5 900 000 руб.</div>
         <button>Продано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='12900000' data-rooms='103'>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/635u.png" alt=""></div>
         <div class="flatName">Трехкомнатная №45</div>
         <div class="charBox">
@@ -81,7 +103,10 @@
         <div class="price">12 900 000 руб.</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='1900000' data-rooms='100'>
+        <div class="discount">-17%</div>
+        <div class="shok">ШОК ЦЕНА!</div>
+        <div class="star"><img src="img/star.png" alt=""></div>
         <div class="imgBox"><img src="img/637u.png" alt=""></div>
         <div class="flatName">Студия №25</div>
         <div class="charBox">
@@ -92,7 +117,9 @@
         <div class="price">1 900 000 руб.</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='23900000' data-rooms='104'>
+        <div class="discount">-6%</div>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/636u.png" alt=""></div>
         <div class="flatName">Четырехкомнатная №259</div>
         <div class="charBox">
@@ -103,7 +130,8 @@
         <div class="price">23 900 000 руб.</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem free">
+      <div class="mainItem free" data-price='5666666' data-rooms='101'>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/638u.png" alt=""></div>
         <div class="flatName">Однокомнатная №56</div>
         <div class="charBox">
@@ -114,7 +142,8 @@
         <div class="price">5 666 666 руб.</div>
         <button>Свободно</button>
       </div>
-      <div class="mainItem free">
+      <div class="mainItem free" data-price='5696664' data-rooms='103'>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/46u.png" alt=""></div>
         <div class="flatName">Трехкомнтаная №46</div>
         <div class="charBox">
@@ -125,7 +154,10 @@
         <div class="price">5 696 664 руб.</div>
         <button>Свободно</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='1200000' data-rooms='102'>
+        <div class="discount">-9%</div>
+        <div class="shok">ШОК ЦЕНА!</div>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/640u.png" alt=""></div>
         <div class="flatName">Однокомнатная №2</div>
         <div class="charBox">
@@ -136,7 +168,9 @@
         <div class="price">1 200 000 руб.</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='1500500' data-rooms='100'>
+        <div class="discount">-6%</div>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/641u.png" alt=""></div>
         <div class="flatName">Студия №12</div>
         <div class="charBox">
@@ -147,7 +181,8 @@
         <div class="price">1 500 500 руб</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='6200000' data-rooms='101'>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/642u.png" alt=""></div>
         <div class="flatName">Однокомнатная №8</div>
         <div class="charBox">
@@ -158,7 +193,9 @@
         <div class="price">6 200 000 руб.</div>
         <button>Забронировано</button>
       </div>
-      <div class="mainItem book">
+      <div class="mainItem book" data-price='5255006' data-rooms='102'>
+        <div class="discount">-6%</div>
+        <div class="star"><img src="img/starEmpty.png" alt=""></div>
         <div class="imgBox"><img src="img/643u.png" alt=""></div>
         <div class="flatName">Двухкомнатная №23</div>
         <div class="charBox">
@@ -169,8 +206,11 @@
         <div class="price">5 255 006 руб.</div>
         <button>Забронировано</button>
       </div>
+
+      <div class="showMore">
+        <button type="button" name="button">Показать ещё</button>
+      </div>
     </div>
-    <div class="showMore"></div>
   </div>
 
   <footer>
@@ -180,6 +220,7 @@
 
 
   <script src="dist\main.js"></script>
+   <script src="https://use.fontawesome.com/550105d68c.js"></script>
 
 </html>
 </body>
