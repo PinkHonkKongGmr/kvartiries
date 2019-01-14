@@ -229,3 +229,65 @@ upbutton.onclick = function(e) {
     return true;
   }
 }
+
+var mail = document.querySelector('#mail');
+var signB = document.querySelector('.signB');
+var regMail = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
+var form = document.querySelector('form');
+
+
+
+function validation() {
+
+  if (mail.value == '') {
+    return false;
+  }
+
+  if (mail.value.match(regMail)) {
+    return true;
+  }
+}
+
+signB.onclick = function() {
+  if (validation()) {
+    console.log('go');
+    form.submit();
+  }
+  if (!validation()) {
+    alert('something going wrong');
+
+  }
+}
+
+form.onsubmit = function() {
+  if (validation()) {
+    console.log('go');
+    form.submit();
+  }
+  if (!validation()) {
+    alert('something going wrong');
+    event.preventDefault();
+  }
+
+}
+
+var humburger = document.querySelectorAll('.humburger');
+
+
+var line1 = document.querySelectorAll('.ln1');
+var line2 = document.querySelectorAll('.ln2');
+var line3 = document.querySelectorAll('.ln3');
+
+var tohide = document.querySelectorAll('.displayResolutionHide')
+
+
+
+for (let i = 0; i < humburger.length; i++) {
+  humburger[i].addEventListener('click', function humburgerToggle() {
+
+    line1[i].classList.toggle('cross');
+    line2[i].classList.toggle('hide');
+    line3[i].classList.toggle('cross2');
+    tohide[i].classList.toggle('displayResolutionHide');
+  });
+}
