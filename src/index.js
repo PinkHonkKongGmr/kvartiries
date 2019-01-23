@@ -1,10 +1,11 @@
-'use strict';
-
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-require('./base.scss');
+//
+// 'use strict';
+//
+// var _jquery = require('jquery');
+//
+// var _jquery2 = _interopRequireDefault(_jquery);
+//
+// require('./base.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -170,6 +171,7 @@ var upSc = document.querySelector('.upSc');
 var back = document.querySelector('.back');
 var thisPoint;
 var nope;
+var subind;
 // переменная блокирует скрывание кнопки "вернуться"
 
 function WhatIsVisible(vis) {
@@ -205,22 +207,23 @@ upbutton.onclick = function (e) {
   if (check == 0) {
     thisPoint = window.pageYOffset;
     upSc.classList.toggle('hide');
+    subind = false;
     window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+      top: 0
     });
     check = 1;
     nope = true;
     setTimeout(function () {
       WhatIsVisible(2);
       nope = false;
+      subind = true;
       return true;
     }, 900);
   }
-  if (check == 1) {
+  if (check == 1 && subind) {
     window.scrollTo({
-      top: thisPoint,
-      behavior: "smooth"
+      top: thisPoint
+
     });
     WhatIsVisible(1);
     return true;
