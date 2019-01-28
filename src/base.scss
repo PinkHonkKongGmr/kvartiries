@@ -10,6 +10,10 @@ li:hover {
   transform: scale(1.2,1.2);
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background: $primary-color;
   font-family: 'Open Sans', sans-serif;
@@ -305,7 +309,6 @@ footer input[type='checkbox'] {
   border-radius: 2px;
 }
 /*Checkboxes styles*/
-
 input[type="checkbox"] {
   display: none;
 }
