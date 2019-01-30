@@ -13,8 +13,83 @@ var priceUP = document.querySelector('.sortPrice .up');
 var priceDown = document.querySelector('.sortPrice .down');
 var roomUP = document.querySelector('.sortRooms .up');
 var roomDown = document.querySelector('.sortRooms .down');
+var flatStatuses = [
+  ["свободно", 'free'],
+  ["забронировано", 'book'],
+  ["продано", 'bought']
+]
 // --------------конец группы-----------------------
 
+// Создаём класс-конструктор элементов таблицы
+class tableBuilder {
+  constructor(element) {
+    this.element = element;
+  }
+
+  renew(atPr, arRm) {
+    this.element.setAttribute('data-price', atPr);
+    this.element.setAttribute('data-rooms', arRm);
+    this.element.classList.add('jsonData');
+  }
+
+  pictureControl(image) {
+
+    for (let i = 0; i < this.element.childNodes.length; i++) {
+      if (this.element.childNodes[i].className === 'imgBox') {
+        this.element.childNodes[i].firstChild.src = image;
+      }
+    }
+  }
+
+  charBoxControl(ch1, ch2, ch3) {
+    for (let i = 0; i < this.element.childNodes.length; i++) {
+
+      if (this.element.childNodes[i].className === 'charBox') {
+        let parent = this.element.childNodes[i];
+        for (let i = 0; i < parent.childNodes.length; i++) {
+          if (parent.childNodes[i].className === 'finish') {
+            parent.childNodes[i].innerHTML = ch1;
+          }
+          if (parent.childNodes[i].className === 'sq') {
+            parent.childNodes[i].innerHTML = ch2;
+          }
+          if (parent.childNodes[i].className === 'floor') {
+            parent.childNodes[i].innerHTML = ch3;
+          }
+        }
+      }
+    }
+  }
+
+  nameControl(name) {
+    for (let i = 0; i < this.element.childNodes.length; i++) {
+      if (this.element.childNodes[i].className === 'flatName') {
+        this.element.childNodes[i].innerHTML = name;
+      }
+    }
+  }
+  priceControl(price) {
+    for (let i = 0; i < this.element.childNodes.length; i++) {
+      if (this.element.childNodes[i].className === 'price') {
+        this.element.childNodes[i].innerHTML = price;
+      }
+    }
+  }
+  bottomControl(status) {
+    for (let i = 0; i < this.element.childNodes.length; i++) {
+      if (this.element.childNodes[i].className === 'btn') {
+        this.element.childNodes[i].innerHTML = status;
+      }
+    }
+  }
+  classControl(compare, arr) {
+    for (let status of arr) {
+      if (compare == status[0]) {
+        this.element.classList.add(status[1]);
+      }
+    }
+  }
+}
 
 // БЛОК КОНТРОЛЯ ТАБЛИЦЫ
 // обновления таблицы
@@ -82,13 +157,13 @@ fetch('./goods.json').then(function(response) {
 }).then(function(data) {
 
   smButton.onclick = function() {
-    var dataCont = data.products;
+    let dataCont = data.products;
     // проверяем обновились ли данные
 
     if (dataCont == dataTemp) {
-      var jsonData = document.querySelectorAll('.jsonData');
-      for (var i = 0; i < jsonData.length; i++) {
-        jsonData[i].classList.toggle('hide');
+      var cards = document.querySelectorAll('.jsonData');
+      for (let card of cards) {
+        card.classList.toggle('hide');
       }
     }
     // если нет то скрываем-показываем
@@ -97,57 +172,17 @@ fetch('./goods.json').then(function(response) {
       // если обновились то обновляем)
       dataCont != dataTemp) {
       dataTemp = data.products;
-      for (var i = 0; i < data.products.length; i++) {
-        var item = document.createElement('div');
-        item.classList.add('mainItem', 'jsonData');
-        var imageBox = document.createElement('div');
-        imageBox.classList.add('imgBox');
-        var image = document.createElement('img');
-        image.src = data.products[i].image;
-        imageBox.appendChild(image);
-        item.appendChild(imageBox);
-        item.setAttribute('data-price', data.products[i].price);
-        item.setAttribute('data-rooms', data.products[i].rooms);
-
-        var newcharBox = document.createElement('div');
-        newcharBox.classList.add('charBox');
-        var span1 = document.createElement('span');
-        var span2 = document.createElement('span');
-        var span3 = document.createElement('span');
-
-        var newFlat = document.createElement('div');
-        newFlat.classList.add('flatName');
-        newFlat.innerHTML = data.products[i].name;
-
-        span1.innerHTML = data.products[i].finish;
-        span2.innerHTML = data.products[i].sq;
-        span3.innerHTML = data.products[i].floor;
-
-        newcharBox.appendChild(span1);
-        newcharBox.appendChild(span2);
-        newcharBox.appendChild(span3);
-        item.appendChild(newFlat);
-        item.appendChild(newcharBox);
-
-        var newPrice = document.createElement('div');
-        newPrice.classList.add('price');
-        newPrice.innerHTML = data.products[i].cost;
-
-        item.appendChild(newPrice);
-
-        var button = document.createElement('button');
-
-        if (data.products[i].vacanse == "свободно") {
-          item.classList.add('free');
-        }
-        if (data.products[i].vacanse == "забронировано") {
-          item.classList.add('book');
-        }
-        if (data.products[i].vacanse == "продано") {
-          item.classList.add('bought');
-        }
-        button.innerHTML = data.products[i].vacanse;
-        item.appendChild(button);
+      for (let flat of data.products) {
+        let itemTemplate = document.querySelector('.mainItem').cloneNode(true);
+        let item = itemTemplate;
+        let itemoperations = new tableBuilder(item);
+        itemoperations.renew(flat.price, flat.rooms);
+        itemoperations.pictureControl(flat.image);
+        itemoperations.charBoxControl(flat.finish, flat.sq, flat.floor);
+        itemoperations.nameControl(flat.name);
+        itemoperations.priceControl(flat.cost);
+        itemoperations.classControl(flat.vacanse, flatStatuses)
+        itemoperations.bottomControl(flat.vacanse)
         main_items_wrapper.insertBefore(item, showMore);
       }
     }
