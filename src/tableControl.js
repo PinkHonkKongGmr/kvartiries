@@ -173,8 +173,7 @@ fetch('./goods.json').then(function(response) {
       dataCont != dataTemp) {
       dataTemp = data.products;
       for (let flat of data.products) {
-        let itemTemplate = document.querySelector('.mainItem').cloneNode(true);
-        let item = itemTemplate;
+        let item = document.querySelector('.mainItem').cloneNode(true);
         let itemoperations = new tableBuilder(item);
         itemoperations.renew(flat.price, flat.rooms);
         itemoperations.pictureControl(flat.image);
